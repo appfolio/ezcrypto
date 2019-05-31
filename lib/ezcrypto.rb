@@ -147,7 +147,7 @@ the generate and with_password methods. This is not yet 100% complete.
               size = 16
             else
               size = 16
-            end
+          end
         end
       end
       if size.nil?
@@ -429,7 +429,7 @@ Warning! The interface may change.
   
 =end
     def initialize(key,target,mode,algorithm)
-      @cipher = OpenSSL::Cipher::Cipher.new(algorithm)  
+      @cipher = OpenSSL::Cipher.new(algorithm)
       if mode
         @cipher.encrypt
       else
@@ -605,7 +605,7 @@ Warning! The interface may change.
     def self.digest64(data,size=16)
       Base64.encode64(digest(data,size))
     end
-	end
+  end
 
 end
 
