@@ -1,6 +1,7 @@
-$:.unshift(File.dirname(__FILE__) + "/../lib/")
+# frozen_string_literal: true
 
-require 'minitest'
+require 'test_helper'
+
 require 'ezcrypto'
 require 'base64'
 require 'digest/sha1'
@@ -32,16 +33,10 @@ class DigestTest < Minitest::Test
   def test_generate_key64
     key=EzCrypto::Digester.generate_key64
     assert 24,key.size
-    
   end
   
   def test_generate_hexkey
     key=EzCrypto::Digester.generate_hexkey
     assert 40,key.size
-    
-  end
-  
-  def test_get_key
-    
   end
 end

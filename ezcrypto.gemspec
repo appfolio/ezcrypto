@@ -1,19 +1,16 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ezcrypto/version'
+require_relative 'lib/ezcrypto/version'
 
-Gem::Specification.new do |s|
-  s.name        = 'ezcrypto'
-  s.version     = EzCrypto::VERSION
-  s.summary     = 'EzCrypto - Simplified Crypto Library'
-  s.email       = 'pelle@stakeventures.com'
-  s.homepage    = 'http://ezcrypto.rubyforge.org'
-  s.description = 'EzCrypto is an easy to use wrapper around the poorly documented OpenSSL ruby library.'
-  s.authors     = ['Pelle Braendgaard', 'Micah Wedemeyer']
-  s.metadata['allowed_push_host'] = 'https://gemini.atl.appfolio.net'
-  s.files = %w[
+Gem::Specification.new do |spec|
+  spec.name        = 'ezcrypto'
+  spec.version     = EzCrypto::VERSION
+  spec.summary     = 'EzCrypto - Simplified Crypto Library'
+  spec.email       = 'dev@appfolio.com'
+  spec.homepage    = 'https://github.com/appfolio/ezcrypto'
+  spec.description = 'EzCrypto is an easy to use wrapper around the poorly documented OpenSSL ruby library.'
+  spec.authors     = ['Pelle Braendgaard', 'Micah Wedemeyer', 'Appfolio']
+  spec.files  = %w[
     rakefile
     README.rdoc
     README_ACTIVE_CRYPTO
@@ -41,13 +38,13 @@ Gem::Specification.new do |s|
     test/valicert_class2_root.crt
     test/agree2.com.cert
   ]
-  s.extra_rdoc_files = %w[
+  spec.extra_rdoc_files = %w[
     CHANGELOG
     README.rdoc
     README_ACTIVE_CRYPTO
     README_DIGITAL_SIGNATURES
   ]
-  s.test_files = %w[
+  spec.test_files = %w[
     test/database.yml
     test/digest_test.rb
     test/dsakey.pem
@@ -65,4 +62,6 @@ Gem::Specification.new do |s|
     test/valicert_class2_root.crt
     test/agree2.com.cert
   ]
+
+  spec.metadata['allowed_push_host'] = 'https://rubygems.pkg.github.com/appfolio'
 end

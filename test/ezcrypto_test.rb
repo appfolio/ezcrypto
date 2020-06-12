@@ -1,6 +1,7 @@
-$:.unshift(File.dirname(__FILE__) + "/../lib/")
+# frozen_string_literal: true
 
-require 'minitest'
+require 'test_helper'
+
 require 'fileutils'
 require 'ezcrypto'
 require 'base64'
@@ -80,6 +81,7 @@ class EzCryptoTest < Minitest::Test
   def test_filestuff_with_defaults      
 
     clearfile = 'lorem_ipsum.txt'
+    clearfile_ez = clearfile + '.ez'
     keyfile = 'lorem_ipsum.key'
     algo = "aes-256-cbc"
     
@@ -90,7 +92,7 @@ class EzCryptoTest < Minitest::Test
 
     # default behaviour: remove clearfile, append '.ez' suffix  
     cryptfile = key.encrypt_file(clearfile)    
-    assert_equal cryptfile, clearfile + ".ez"
+    assert_equal cryptfile, clearfile_ez
     assert_file_not_exists clearfile
     assert_file_exists cryptfile 
     assert_file_contains cryptfile, key.encrypt(CLEAR_TEXT)    
@@ -100,7 +102,8 @@ class EzCryptoTest < Minitest::Test
     assert_file_exists clearfile
     assert_file_not_exists cryptfile
     assert_file_contains clearfile, CLEAR_TEXT    
-    FileUtils.rm [keyfile, clearfile, cryptfile], :force => true
+  ensure
+    FileUtils.rm [keyfile, clearfile, clearfile_ez], :force => true
   end
   
   def test_filestuff_with_options
@@ -181,7 +184,7 @@ class EzCryptoTest < Minitest::Test
     ALGORITHMS.each do |alg|
       key=EzCrypto::Key.generate :algorithm=>alg
       encrypted=key.encrypt clear
-      assert_not_nil encrypted    
+      refute_nil encrypted
     end
   end
   
@@ -189,7 +192,7 @@ class EzCryptoTest < Minitest::Test
     ALGORITHMS.each do |alg|
       key=EzCrypto::Key.generate :algorithm=>alg
       encrypted=key.encrypt clear
-      assert_not_nil encrypted
+      refute_nil encrypted
       assert_equal clear,key.decrypt(encrypted)
     end
   end
@@ -197,7 +200,7 @@ class EzCryptoTest < Minitest::Test
   def assert_decrypt64(clear)
     key=EzCrypto::Key.generate
     encrypted=key.encrypt64 clear
-    assert_not_nil encrypted
+    refute_nil encrypted
     assert_equal clear,key.decrypt64(encrypted)
   end
   
