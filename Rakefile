@@ -1,24 +1,26 @@
-require 'rubygems'
+# frozen_string_literal: true
+
 require 'bundler'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
-  $stderr.puts e.message
-  $stderr.puts "Run `bundle install` to install missing gems"
+  warn e.message
+  warn 'Run `bundle install` to install missing gems'
   exit e.status_code
 end
 
-require 'af_gems/gem_tasks'
-require 'af_gems/appraisal'
+require 'af_gems'
 
 Rake::TestTask.new(:test) do |test|
-  test.libs << 'test'
+  test.libs << 'lib' << 'test'
   test.pattern = 'test/**/*_test.rb'
   test.verbose = true
+  test.warning = false
 end
 
 namespace :test do
-  AfGems::RubyAppraisalTask.new(:all, [ 'ruby-2.5.3', 'ruby-2.6.3'])
+  AfGems::RubyAppraisalTask.new(:all, ['ruby-2.6.3'])
 end
 
-task :default => :test
+task default: :test

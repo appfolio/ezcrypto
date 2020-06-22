@@ -1,8 +1,13 @@
-case(RUBY_VERSION)
-  when '2.5.3', '2.6.3' then
-    appraise "ruby-#{RUBY_VERSION}_rails521" do
-      gem 'rails',    '5.2.1'
-    end
-  else
-    raise "Unsupported Ruby version #{RUBY_VERSION}"
+# frozen_string_literal: true
+
+case RUBY_VERSION
+when '2.6.3' then
+  appraise "ruby-#{RUBY_VERSION}_rails522" do
+    gem 'rails', '~> 5.2.2'
+  end
+  appraise "ruby-#{RUBY_VERSION}_rails6" do
+    gem 'rails', '~> 6.0.0'
+  end
+else
+  raise "Unsupported Ruby version #{RUBY_VERSION}"
 end

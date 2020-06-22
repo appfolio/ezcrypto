@@ -1,6 +1,5 @@
-$:.unshift(File.dirname(__FILE__) + "/../lib/")
+require 'test_helper'
 
-require 'minitest'
 require 'fileutils'
 require 'ezsig'
 require 'base64'
