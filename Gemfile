@@ -7,8 +7,8 @@ source 'https://rubygems.org' do
 end
 
 source 'https://rubygems.pkg.github.com/appfolio' do
-  gem 'af_gems', '>= 9', '< 10', group: :development
-  gem 'af_testing', '>= 14', '< 15'
+  gem 'af_gems', '>= 9.2', '< 10', group: :development
+  gem 'af_testing', '>= 14.4', '< 15'
 end
 
 gemspec

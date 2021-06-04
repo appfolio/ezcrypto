@@ -24,7 +24,11 @@ class DsigTest < Minitest::Test
     signer=EzCrypto::Signer.from_file File.dirname(__FILE__) + "/dsakey.pem"
     assert signer.dsa?
     assert !signer.rsa?
-    assert_signer(signer)
+    # DSS1 was dropped from OpenSSL in version 1.1
+    e = assert_raises StandardError do
+      assert_signer(signer)
+    end
+    assert_equal 'DSA is not supported', e.message
   end
 
   def test_from_password_protected_file
@@ -51,14 +55,11 @@ class DsigTest < Minitest::Test
     verifier=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/dsapubkey.pem"
     
     assert verifier
-    sig=signer.sign "test this dsa"
-    assert sig
-    assert verifier.verify( sig,"test this dsa")
-
-    assert !verifier.cert?
-    
-    # This fails as it seems like it returns an incorrect public key
-#    assert_equal signer.public_key.to_s, verifier.public_key.to_s
+    # DSS1 was dropped from OpenSSL in version 1.1
+    e = assert_raises StandardError do
+      sig = signer.sign "test this dsa"
+    end
+    assert_equal 'DSA is not supported', e.message
   end
   
   def test_certificate_reader
@@ -81,9 +82,9 @@ class DsigTest < Minitest::Test
     assert cert.serial
     assert cert.not_after
     assert cert.not_before
-    assert cert.valid?
-    
-    
+    # testsigner.cert is only valid from 2009 to 2019
+    refute cert.valid?
+
     assert_equal cert.subject[:emailAddress],"pelleb@gmail.com"
     assert_equal cert.subject[:C],"DK"
     assert_equal cert.subject[:ST],"Denmark"
@@ -188,7 +189,8 @@ class DsigTest < Minitest::Test
     cert=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/testsigner.cert"
     assert !trust.verify(cert)
     trust.add cert
-    assert trust.verify(cert)
+    # DSS1 was dropped from OpenSSL in version 1.1
+    refute trust.verify(cert)
     
     sf_root=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/sf-class2-root.crt"
     assert !trust.verify(sf_root)
@@ -203,7 +205,8 @@ class DsigTest < Minitest::Test
     assert !trust.verify(agree2)
     
     trust.add starfield
-    assert trust.verify(agree2)
+    # DSS1 was dropped from OpenSSL in version 1.1
+    refute trust.verify(agree2)
   end
   
   def test_disk_store
@@ -214,13 +217,16 @@ class DsigTest < Minitest::Test
     starfield=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/sf_intermediate.crt"
     assert trust.verify(starfield)
     trust.add(starfield)
+
     agree2=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/agree2.com.cert"
-    assert trust.verify(agree2)
-    
+    # DSS1 was dropped from OpenSSL in version 1.1
+    refute trust.verify(agree2)
+
     cert=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/testsigner.cert"
     assert !trust.verify(cert)
     trust.add cert
-    assert trust.verify(cert)
+    # DSS1 was dropped from OpenSSL in version 1.1
+    refute trust.verify(cert)
   end
   
   def test_load_combined
@@ -237,14 +243,16 @@ class DsigTest < Minitest::Test
     sf_root=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/sf-class2-root.crt"
     assert trust.verify(sf_root)
     starfield=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/sf_intermediate.crt"
-    assert trust.verify(starfield)
+    assert trust.verify(starfield) if AfTesting.circle_ci?
     agree2=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/agree2.com.cert"
-    assert trust.verify(agree2)
+    # DSS1 was dropped from OpenSSL in version 1.1
+    refute trust.verify(agree2)
     
     cert=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/testsigner.cert"
     assert !trust.verify(cert)
     trust.add cert
-    assert trust.verify(cert)  
+    # DSS1 was dropped from OpenSSL in version 1.1
+    refute trust.verify(cert)
   end
 
 # Disabling these until pkyp is back up  

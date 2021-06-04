@@ -1,22 +1,16 @@
 version: 2.1
-commands:
-  bundle_install_and_test:
-    steps:
-      - checkout
-      - run: sudo gem update --system
-      - run: bundle install
-      - run: bundle exec appraisal install
-      - run: bundle exec appraisal rake test
 
-jobs:
-  test-ruby-263:
-    docker:
-      - image: circleci/ruby:2.6.3
-    steps:
-      - bundle_install_and_test
+orbs:
+  gem-tool: appfolio/gem-tool@volatile
 
 workflows:
   rc:
     jobs:
-      - test-ruby-263:
+      - gem-tool/checkout_bundle_install_appraisal_rake_test:
+          name: test-ruby-271
           context: appfolio_test_context
+          executor_tag: gem-tool/ruby_base_271
+      - gem-tool/checkout_bundle_install_appraisal_rake_test:
+          name: test-ruby-263
+          context: appfolio_test_context
+          executor_tag: gem-tool/ruby_base_263
