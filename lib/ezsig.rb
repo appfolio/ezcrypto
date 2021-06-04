@@ -99,7 +99,9 @@ module EzCrypto
       if rsa?
         @priv.sign(OpenSSL::Digest::SHA1.new,data)
       elsif dsa?
-        @priv.sign(OpenSSL::Digest::DSS1.new,data)
+        # DSS1 was dropped from OpenSSL in version 1.1
+        # @priv.sign(OpenSSL::Digest::DSS1.new,data)
+        raise StandardError, 'DSA is not supported'
       end
     end
     
@@ -186,7 +188,7 @@ module EzCrypto
             pem="-----BEGIN#{pem}\n"
               cert=decode(pem)
               if cert.is_a? EzCrypto::Verifier
-                certs<<cert
+                certs << cert
               end
         end
       end
@@ -234,7 +236,9 @@ module EzCrypto
       if rsa?
         @pub.verify( OpenSSL::Digest::SHA1.new, sig, data )
       elsif dsa?
-        @pub.verify( OpenSSL::Digest::DSS1.new, sig, data )
+        # DSS1 was dropped from OpenSSL in version 1.1
+        # @pub.verify( OpenSSL::Digest::DSS1.new, sig, data )
+        raise StandardError, 'DSA is not supported'
       else
         false
       end

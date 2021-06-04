@@ -122,7 +122,7 @@ the generate and with_password methods. This is not yet 100% complete.
 =end
     def self.calculate_key_size(algorithm)
       if !algorithm.nil?
-        algorithm=~/^([[:alnum:]]+)(-(\d+))?/
+        algorithm.to_s =~ /^([[:alnum:]]+)(-(\d+))?/
         if $3
           size=($3.to_i)/8
         else
