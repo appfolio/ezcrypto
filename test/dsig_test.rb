@@ -5,7 +5,7 @@ require 'ezsig'
 require 'base64'
 
 class DsigTest < Minitest::Test
-  def _test_generate_key #very slow so not run by default
+  def test_generate_key #very slow so not run by default
     signer=EzCrypto::Signer.generate
     assert signer.rsa?
     assert !signer.dsa?
@@ -243,7 +243,7 @@ class DsigTest < Minitest::Test
     sf_root=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/sf-class2-root.crt"
     assert trust.verify(sf_root)
     starfield=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/sf_intermediate.crt"
-    assert trust.verify(starfield) if AfTesting.circle_ci?
+    assert trust.verify(starfield) if ENV.key?('CIRCLECI')
     agree2=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/agree2.com.cert"
     # DSS1 was dropped from OpenSSL in version 1.1
     refute trust.verify(agree2)
@@ -255,29 +255,6 @@ class DsigTest < Minitest::Test
     refute trust.verify(cert)
   end
 
-# Disabling these until pkyp is back up  
-#  def test_public_key_load_from_pkyp
-#    verifier=EzCrypto::Verifier.from_pkyp "e93e18114cbefaaa89fda908b09df63d3662879a"
-#    agree2=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/agree2.com.cert"
-#    assert_equal agree2.cert.to_s,verifier.cert.to_s
-#    assert verifier
-#  end
-#
-#  def test_register_public_key_at_pkyp
-#    pub=EzCrypto::Verifier.from_file File.dirname(__FILE__) + "/agree2.com.cert"
-#    assert_equal pub.digest,pub.register_with_pkyp
-#  end
-#  
-#  def test_create_register_and_fetch_public_key
-#    signer=EzCrypto::Signer.generate
-#    assert_equal signer.verifier.digest,signer.verifier.register_with_pkyp
-#    verifier=EzCrypto::Verifier.from_pkyp signer.verifier.digest
-#    sig=signer.sign "hello"
-#    assert sig
-#    assert verifier.verify( sig,"hello")    
-#  end
-#  
-  
   def assert_signer(signer)
     assert signer
     assert signer.public_key
