@@ -20,8 +20,7 @@ if ENV['WITH_COVERAGE'] == 'true'
   end
 end
 
-require 'af_testing/mini_test'
 require 'minitest/autorun'
 require 'minitest/reporters'
 
-MiniTest::Reporters.use!
+MiniTest::Reporters.use! unless ENV['RM_INFO']
