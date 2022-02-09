@@ -71,7 +71,6 @@ class EzCryptoTest < Minitest::Test
     key.store keyfile    
     assert_file_exists keyfile    
     assert_file_permissions keyfile, 0100400    
-    
     key2 = EzCrypto::Key.load(keyfile)    
     assert_equal key.raw, key2.raw
     
@@ -147,11 +146,11 @@ class EzCryptoTest < Minitest::Test
   end
   
   def assert_file_exists(filename)
-    assert File.exists?(filename)
+    assert File.exist?(filename)
   end
 
   def assert_file_not_exists(filename)
-    assert !File.exists?(filename)
+    assert !File.exist?(filename)
   end
   
   def assert_file_contains(filename, expected)

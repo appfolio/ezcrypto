@@ -244,7 +244,7 @@ it to a block. By default only the owner may read it.
       ensure
         File.umask(old_umask)
       end
-      File.chmod(mod, file) if File.exists?(file)
+      File.chmod(mod, file) if File.exist?(file)
       File.size(file)
     end
 
@@ -267,9 +267,9 @@ This is not very safe :-)
           f.flush
         end
       ensure
-        File.delete(file) if File.exists?(file)
+        File.delete(file) if File.exist?(file)
       end
-      return !File.exists?(file)
+      return !File.exist?(file)
     end
 
 
@@ -289,7 +289,8 @@ Load a key from a yaml_file generated via Key#store.
 =end
     def self.load(filename)
       require 'yaml'
-      hash = YAML::load_file(filename)
+      require 'psych'
+      hash = Psych.respond_to?(:unsafe_load_file) ? Psych.unsafe_load_file(filename) : YAML::load_file(filename)
       req = proc { |k| hash[k] or raise "Missing element #{k} in #{filename}" }
       key = self.new Base64.decode64(req.call(:key)) , :algorithm => req.call(:algorithm)
       return key
@@ -407,7 +408,7 @@ the delete_source is 'true'.
           end
         end
       end
-      safe_delete(sourcefile) if delete_source && File.exists?(targetfile)
+      safe_delete(sourcefile) if delete_source && File.exist?(targetfile)
       return targetfile
     end
     

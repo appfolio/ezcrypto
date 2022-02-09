@@ -20,7 +20,7 @@ Rake::TestTask.new(:test) do |test|
 end
 
 namespace :test do
-  AfGems::RubyAppraisalTask.new(:all, ['ruby-2.6.3', 'ruby-2.7.1'])
+  AfGems::RubyAppraisalTask.new(:all, ['ruby-2.6.9', 'ruby-2.7.5', 'ruby-3.1.0'])
 end
 
 task default: :test
