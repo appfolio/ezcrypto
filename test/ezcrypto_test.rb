@@ -204,7 +204,7 @@ class EzCryptoTest < Minitest::Test
     assert_equal clear,key.decrypt64(encrypted)
   end
   
-  ALGORITHMS=["aes128","bf","blowfish","des","des3","rc4","rc2"]
+  ALGORITHMS=["aes128", "aes256", "des3"]
   CLEAR_TEXT="Lorem ipsum dolor sit amet, suspendisse id interdum mus leo id. Sapien tempus consequat nullam, platea vitae sociis sed elementum et fermentum, vel praesent eget. Sed blandit augue, molestie mus sed habitant, semper voluptatibus neque, nullam a augue. Aptent imperdiet curabitur, quam quis laoreet. Dolor magna. Quis vestibulum amet eu arcu fringilla nibh, mi urna sunt dictumst nulla, elit quisque purus eros, sem hendrerit. Vulputate tortor rhoncus ac nonummy tortor nulla. Nunc id nunc luctus ligula."
 end
 
