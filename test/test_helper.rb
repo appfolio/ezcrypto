@@ -23,4 +23,5 @@ end
 require 'minitest/autorun'
 require 'minitest/reporters'
 
-MiniTest::Reporters.use! unless ENV['RM_INFO']
+Minitest::Test.make_my_diffs_pretty!
+Minitest::Reporters.use! unless ENV['RM_INFO']
