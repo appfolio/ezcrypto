@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
     README_ACTIVE_CRYPTO
     README_DIGITAL_SIGNATURES
     MIT-LICENSE
-    CHANGELOG
+    CHANGELOG.md
     lib/active_crypto.rb
     lib/ezcrypto.rb
     lib/ezsig.rb
@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
     test/agree2.com.cert
   ]
   spec.extra_rdoc_files = %w[
-    CHANGELOG
+    CHANGELOG.md
     README.rdoc
     README_ACTIVE_CRYPTO
     README_DIGITAL_SIGNATURES
