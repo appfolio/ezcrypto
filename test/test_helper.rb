@@ -20,6 +20,7 @@ if ENV['WITH_COVERAGE'] == 'true'
   end
 end
 
+require 'debug'
 require 'minitest/autorun'
 require 'minitest/reporters'
 
