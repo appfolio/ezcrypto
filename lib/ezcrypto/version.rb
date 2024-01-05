@@ -1,3 +1,3 @@
 module EzCrypto
-  VERSION = '0.7.3-appfolio.3'.freeze
+  VERSION = '0.7.3-appfolio.4'.freeze
 end
