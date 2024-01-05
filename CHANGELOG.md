@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.7.3.pre.appfolio.4](https://github.com/appfolio/ezcrypto/tree/v0.7.3.pre.appfolio.4) (2024-01-05)
+
+[Full Changelog](https://github.com/appfolio/ezcrypto/compare/v0.7.3.pre.appfolio.3...v0.7.3.pre.appfolio.4)
+
+**Merged pull requests:**
+
+- \[BANK-812\] Appraise Ruby `3.3.0` [\#8](https://github.com/appfolio/ezcrypto/pull/8) ([Maimer](https://github.com/Maimer))
+- Fix minitest deprecation [\#7](https://github.com/appfolio/ezcrypto/pull/7) ([Maimer](https://github.com/Maimer))
+- Updates for Ruby `2.7.7`, `3.1.3`, `3.2.1` [\#6](https://github.com/appfolio/ezcrypto/pull/6) ([Maimer](https://github.com/Maimer))
+
 ## [v0.7.3.pre.appfolio.3](https://github.com/appfolio/ezcrypto/tree/v0.7.3.pre.appfolio.3) (2022-02-09)
 
 [Full Changelog](https://github.com/appfolio/ezcrypto/compare/v0.7.3.pre.appfolio.2...v0.7.3.pre.appfolio.3)
