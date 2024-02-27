@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  title: ezcrypto
+  description: This catalog entity description has been auto-generated
+  tags: []
+  annotations:
+    appfolio.com/package-location: url:https://github.com/appfolio/ezcrypto/pkgs/rubygems/ezcrypto
+    appfolio.com/package-type: gem
+  name: ezcrypto
+spec:
+  type: library
+  lifecycle: unknown
+  owner: engineering
