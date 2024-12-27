@@ -1,8 +1,0 @@
-name: Lint Commit Messages
-
-on:
-  pull_request:
-
-jobs:
-  lint-commits:
-    uses: appfolio/gem-releaser/.github/workflows/lint-commits.yml@v1
