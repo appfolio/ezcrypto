@@ -1,0 +1,11 @@
+name: Release Gem
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  release-gem:
+    uses: appfolio/gem-releaser/.github/workflows/release.yml@v1
