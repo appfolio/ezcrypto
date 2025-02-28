@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.7.3.appfolio5](https://github.com/appfolio/ezcrypto/tree/v0.7.3.appfolio5) (2025-02-28)
+
+[Full Changelog](https://github.com/appfolio/ezcrypto/compare/v0.7.3.appfolio4...v0.7.3.appfolio5)
+
+**Merged pull requests:**
+
+- Appraise ruby 3.4 [\#12](https://github.com/appfolio/ezcrypto/pull/12) ([charulsharma51](https://github.com/charulsharma51))
+- Revert "\[BANK-1272\] Add gem releaser" [\#11](https://github.com/appfolio/ezcrypto/pull/11) ([Maimer](https://github.com/Maimer))
+- \[BANK-1272\] Add gem releaser [\#10](https://github.com/appfolio/ezcrypto/pull/10) ([Maimer](https://github.com/Maimer))
+- \[KNOW-141\] Add software catalog metadata file\(s\) [\#9](https://github.com/appfolio/ezcrypto/pull/9) ([modethirteen](https://github.com/modethirteen))
+
+## [v0.7.3.appfolio4](https://github.com/appfolio/ezcrypto/tree/v0.7.3.appfolio4) (2024-01-22)
+
+[Full Changelog](https://github.com/appfolio/ezcrypto/compare/v0.7.3.pre.appfolio.4...v0.7.3.appfolio4)
+
 ## [v0.7.3.pre.appfolio.4](https://github.com/appfolio/ezcrypto/tree/v0.7.3.pre.appfolio.4) (2024-01-05)
 
 [Full Changelog](https://github.com/appfolio/ezcrypto/compare/v0.7.3.pre.appfolio.3...v0.7.3.pre.appfolio.4)
