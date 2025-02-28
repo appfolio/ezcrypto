@@ -63,6 +63,6 @@ Gem::Specification.new do |spec|
     test/agree2.com.cert
   ]
 
-  spec.required_ruby_version = Gem::Requirement.new('< 3.4')
+  spec.required_ruby_version = Gem::Requirement.new('< 3.5')
   spec.metadata['allowed_push_host'] = 'https://rubygems.pkg.github.com/appfolio'
 end
