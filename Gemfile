@@ -4,6 +4,7 @@ source 'https://rubygems.org' # global source
 source 'https://rubygems.pkg.github.com/appfolio' # global source
 
 source 'https://rubygems.org' do
+  gem 'base64', '>= 0.2.0', '< 1'
   gem 'debug', '>= 1.9', '< 2'
   gem 'minitest', '>= 5.19', '< 6'
   gem 'minitest-reporters', '>= 1.6', '< 2'
