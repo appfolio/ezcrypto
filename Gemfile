@@ -12,7 +12,7 @@ source 'https://rubygems.org' do
 end
 
 source 'https://rubygems.pkg.github.com/appfolio' do
-  gem 'af_gems', '>= 9.3', '< 10', group: :development
+  gem 'af_gems', '>= 9.6', '< 10', group: :development
 end
 
 gemspec

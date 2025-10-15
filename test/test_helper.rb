@@ -2,27 +2,6 @@
 
 ENV['RAILS_ENV'] = 'test'
 
-require 'bundler'
+require 'af_gems/test/all'
 
-begin
-  Bundler.setup(:default, :development)
-rescue Bundler::BundlerError => e
-  warn e.message
-  warn 'Run `bundle install` to install missing gems'
-  exit e.status_code
-end
-
-if ENV['WITH_COVERAGE'] == 'true'
-  require 'simplecov'
-  SimpleCov.start do
-    enable_coverage :branch
-    add_filter %r{\A/test}
-  end
-end
-
-require 'debug'
-require 'minitest/autorun'
-require 'minitest/reporters'
-
-Minitest::Test.make_my_diffs_pretty!
-Minitest::Reporters.use! unless ENV['RM_INFO']
+require 'debug' if ENV['REQUIRE_DEBUG']
