@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.7.3.appfolio6](https://github.com/appfolio/ezcrypto/tree/v0.7.3.appfolio6) (2025-11-04)
+
+[Full Changelog](https://github.com/appfolio/ezcrypto/compare/v0.7.3.appfolio5...v0.7.3.appfolio6)
+
+**Merged pull requests:**
+
+- \[BANK-1584\] Fix frozen strings [\#15](https://github.com/appfolio/ezcrypto/pull/15) ([Maimer](https://github.com/Maimer))
+- \[PROFX-2089\] Use `af_gems` test helpers [\#14](https://github.com/appfolio/ezcrypto/pull/14) ([mluders](https://github.com/mluders))
+- \[BANK-1584\] npm / yarn fixes [\#13](https://github.com/appfolio/ezcrypto/pull/13) ([Maimer](https://github.com/Maimer))
+
 ## [v0.7.3.appfolio5](https://github.com/appfolio/ezcrypto/tree/v0.7.3.appfolio5) (2025-02-28)
 
 [Full Changelog](https://github.com/appfolio/ezcrypto/compare/v0.7.3.appfolio4...v0.7.3.appfolio5)
