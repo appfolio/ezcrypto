@@ -452,7 +452,11 @@ Process the givend data with the cipher.
 =end
     def update(data)
       reset if @finished
-      @target<< to_target(@cipher.update(data))
+      if @target.is_a?(String)
+        @target += to_target(@cipher.update(data))
+      else
+        @target << to_target(@cipher.update(data))
+      end
     end
 
 =begin rdoc
@@ -466,7 +470,11 @@ Process the givend data with the cipher.
 Finishes up any last bits of data in the cipher and returns the final result.
 =end
     def final
-      @target<< to_target(@cipher.final)
+      if @target.is_a?(String)
+        @target += to_target(@cipher.final)
+      else
+        @target << to_target(@cipher.final)
+      end
       @finished=true
       @target
     end
